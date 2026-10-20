@@ -14,4 +14,5 @@
   <Project Path="04_01_Delegation/04_01_Delegation.vcxproj" Id="ae7a4064-06cd-4549-b352-77b9ae6f8c79" />
   <Project Path="05_01_ConstExplicit/05_01_ConstExplicit.vcxproj" Id="45597f12-1474-4daf-a70c-2155e388512b" />
   <Project Path="05_02_PraktWork/05_02_PraktWork.vcxproj" Id="3ad0f20d-52d1-4030-be3a-7c58d0fd58ee" />
+  <Project Path="05_03_HomeWork/05_03_HomeWork.vcxproj" Id="cba9d91d-5dbc-402f-aadc-033a1518aa76" />
 </Solution>

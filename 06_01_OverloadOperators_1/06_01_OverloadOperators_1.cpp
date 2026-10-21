@@ -33,7 +33,7 @@ public:
     // Owerload operators
     // void operator [ sumbol operator ]() {}
 
-    #pragma region Математичні оператори
+    #pragma region Math operators
     Point operator +(const Point& other) {
         Point res(this->x + other.x, this->y + other.y);
         return res;
@@ -58,10 +58,41 @@ public:
         this->y += other.y;
         return *this;
     }
+    Point operator =(const Point& other) {
+        this->x = other.x;
+        this->y = other.y;
+        return *this;
+    }
+    #pragma endregion
+    #pragma region Uno operators
+    Point operator +=(const Point& other) {
+        this->x += other.x;
+        this->y += other.y;
+        return *this;
+    }
+    #pragma endregion
 
-
-
-
+    #pragma region Logic operators < > <= >= ! == !=
+    bool operator > (const Point& other) {
+        return ((this->x + this->y) > (other.x + other.y));
+    }
+    bool operator < (const Point& other) {
+        return ((this->x + this->y) < (other.x + other.y));
+    }
+    bool operator >= (const Point& other) {
+        return ((this->x + this->y) >= (other.x + other.y));
+    }
+    bool operator <= (const Point& other) {
+        return ((this->x + this->y) <= (other.x + other.y));
+    }
+    bool operator == (const Point& other) {
+        return ((this->x == other.x) && (this->y == other.y));
+    }
+    bool operator == (const Point& other) {
+        return ((this->x != other.x) || (this->y != other.y));
+        // or
+        return !(*this == other);
+    }
     #pragma endregion
 
 
@@ -114,6 +145,13 @@ int main()
     p1 += p2;
     cout << "Res: "; p1.Print();
 
+
+    if (p1 > p2)
+        cout << "p1 > p1" << endl;
+    else cout << "p1 < p1" << endl;
+    if (p1 < p2)
+        cout << "p1 < p1" << endl;
+    else cout << "p1 > p1" << endl;
 
 
 }

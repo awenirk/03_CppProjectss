@@ -16,4 +16,5 @@
   <Project Path="05_02_PraktWork/05_02_PraktWork.vcxproj" Id="3ad0f20d-52d1-4030-be3a-7c58d0fd58ee" />
   <Project Path="05_03_HomeWork/05_03_HomeWork.vcxproj" Id="cba9d91d-5dbc-402f-aadc-033a1518aa76" />
   <Project Path="06_01_OverloadOperators_1/06_01_OverloadOperators_1.vcxproj" Id="3412da4e-b84f-44ac-a5af-b2ec6cf375fa" />
+  <Project Path="06_02_PraktWork/06_02_PraktWork.vcxproj" Id="62a0961f-f189-4f75-8915-4e71b3c031e5" />
 </Solution>

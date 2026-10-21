@@ -2,9 +2,6 @@
 using namespace std;
 
 
-
-
-
 class Point {
     int x;
     int y;
@@ -16,7 +13,7 @@ public:
     Point(int value)
     {
         this->x = value;
-        this->x = value;
+        this->y = value;
     }
     Point(int x, int y) {
         this->x = x;
@@ -35,6 +32,8 @@ public:
     }
     // Owerload operators
     // void operator [ sumbol operator ]() {}
+
+    #pragma region Математичні оператори
     Point operator +(const Point& other) {
         Point res(this->x + other.x, this->y + other.y);
         return res;
@@ -51,6 +50,20 @@ public:
         Point res(this->x / other.x, this->y + other.y);
         return res;
     }
+    #pragma endregion
+
+    #pragma region Binary operators
+    Point operator +=(const Point& other) {
+        this->x += other.x;
+        this->y += other.y;
+        return *this;
+    }
+
+
+
+
+    #pragma endregion
+
 
 
 
@@ -67,8 +80,8 @@ int main()
 
     int a = 5, b = 4;
     cout << a + b << endl;
-    cout << a - b << endl;
-    cout << a * b << endl;
+    cout << a << endl;
+    cout << b << endl;
 
     Point p1(5, 3);
     Point p2(7, 8);
@@ -98,6 +111,8 @@ int main()
     res = p1 / p2;
     cout << "Res: "; res.Print();
 
+    p1 += p2;
+    cout << "Res: "; p1.Print();
 
 
 

@@ -190,10 +190,10 @@ public:
     #pragma endregion
 
     #pragma region Owerload operators 4
-    void operator ++() {
+    void operator ++(int) {
         IncreaseOneSecond();
     }
-    void operator --() {
+    void operator --(int) {
         decreaseOneSecond();
     }
     #pragma endregion

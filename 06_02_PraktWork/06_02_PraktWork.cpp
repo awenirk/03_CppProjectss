@@ -178,7 +178,7 @@ public:
             (other.days * 86400 + other.hours * 3600 + other.minutes * 60 + other.seconds);
     }
     #pragma endregion
-
+    
     #pragma region Owerload operators 3
     bool operator ==(const Time& other) {
         return (this->days * 86400 + this->hours * 3600 + this->minutes * 60 + this->seconds) ==
@@ -212,5 +212,8 @@ int main()
     time1++;
     time1.PrintShort();
     time1--;
+    time1.PrintShort();
+    Time time2(1, 33, 59, 55);
+    time1 = time1 + time2;
     time1.PrintShort();
 }

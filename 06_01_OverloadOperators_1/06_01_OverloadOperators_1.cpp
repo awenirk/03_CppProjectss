@@ -64,12 +64,35 @@ public:
         return *this;
     }
     #pragma endregion
+    
     #pragma region Uno operators
     Point operator +=(const Point& other) {
         this->x += other.x;
         this->y += other.y;
         return *this;
     }
+    // leson 2
+    Point operator ++() { // prefix form increment
+        this->x++;
+        this->y++;
+        return *this;
+    }
+    Point operator ++(int) { // postfix form increment
+        this->x++;
+        this->y++;
+        return *this;
+    }
+    Point operator --() { // prefix form decrement
+        this->x--;
+        this->y--;
+        return *this;
+    }
+    Point operator --(int) { // postfix form decrement
+        this->x--;
+        this->y--;
+        return *this;
+    }
+    //
     #pragma endregion
 
     #pragma region Logic operators < > <= >= ! == !=

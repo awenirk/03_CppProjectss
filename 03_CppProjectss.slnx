@@ -19,4 +19,6 @@
   <Project Path="06_02_PraktWork/06_02_PraktWork.vcxproj" Id="62a0961f-f189-4f75-8915-4e71b3c031e5" />
   <Project Path="07_01_PraktWork/07_01_PraktWork.vcxproj" Id="31a3982c-9756-4dce-be73-0ba9775629a2" />
   <Project Path="07_02_HomeWork/07_02_HomeWork.vcxproj" Id="fc565697-2f89-458e-9b6a-8d0ecb327141" />
+  <Project Path="08_01_TemplateClass/08_01_TemplateClass.vcxproj" Id="b6fdc74a-f2fb-4202-9529-f4390233a16b" />
+  <Project Path="08_02_PraktWork/08_02_PraktWork.vcxproj" Id="10cdcd64-8bf3-4241-931c-396c4a84d6c7" />
 </Solution>

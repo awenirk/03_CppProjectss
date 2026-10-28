@@ -25,11 +25,11 @@ int main()
     lib.showLibrary();
 
     Library copy(lib);
-    cout << "-=-=-=-=-=-=- Copy -=-=-=-=-=-=-";
+    cout << "-=-=-=-=-=-=- Copy -=-=-=-=-=-=-" << endl;
     copy.showLibrary();
 
     Library newLib = copy;
-    cout << "-=-=-=-=-=-=- Copy -=-=-=-=-=-=-";
+    cout << "-=-=-=-=-=-=- Copy -=-=-=-=-=-=-" << endl;
     newLib.showLibrary();
 
     TestLibrary(lib);

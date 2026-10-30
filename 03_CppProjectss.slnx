@@ -22,4 +22,7 @@
   <Project Path="08_01_TemplateClass/08_01_TemplateClass.vcxproj" Id="b6fdc74a-f2fb-4202-9529-f4390233a16b" />
   <Project Path="08_02_PraktWork/08_02_PraktWork.vcxproj" Id="10cdcd64-8bf3-4241-931c-396c4a84d6c7" />
   <Project Path="09_01_MoveConstructor/09_01_MoveConstructor.vcxproj" Id="29a173b3-c45e-41ef-874d-4456135d6645" />
+  <Project Path="09_02_PraktWork/09_02_PraktWork.vcxproj" Id="e856c5e9-0361-4da7-8c71-3e1e9633bdff" />
+  <Project Path="10_01_Stack/10_01_Stack.vcxproj" Id="55f55228-9309-4a8e-8093-6e51806f7cde" />
+  <Project Path="10_02_HomeWork/10_02_HomeWork.vcxproj" Id="5f401486-3cf0-474d-a58a-cbea524e25f6" />
 </Solution>

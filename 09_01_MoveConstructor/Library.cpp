@@ -39,6 +39,15 @@ Library::~Library() {
         delete[] books;
 }
 
+Library::Library(Library&& oth) {
+    this->name = oth.name;
+    this->address = oth.address;
+    this->countBooks = oth.countBooks;
+    this->books = oth.books;
+    oth.books = nullptr;
+    cout << "Move constructor" << endl;
+}
+
 void Library::showLibrary() const {
     cout << "Name: " << name << endl;
     cout << "Address library: " << address << endl;

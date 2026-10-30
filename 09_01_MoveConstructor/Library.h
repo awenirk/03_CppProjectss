@@ -14,14 +14,7 @@ public:
     Library(const Library& oth);
     Library& operator =(const Library& oth);
     ~Library();
-    Library(Library&& oth) {
-        this->name = oth.name;
-        this->address = oth.address;
-        this->countBooks = oth.countBooks;
-        this->books = oth.books;
-        oth.books = nullptr;
-        cout << "Move constructor" << endl;
-    }
+    Library(Library&& oth);
 
     void showLibrary()const;
     void AddBook(Book b);

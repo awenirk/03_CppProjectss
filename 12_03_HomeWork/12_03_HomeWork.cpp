@@ -8,20 +8,24 @@ using namespace std;
 методи для видалення, додавання нової точки на початок та в кінець
 та метод Print() для виводу точок на екран.
 */
+
 template <typename T>
 class List {
 
 };
 
 class Point {
-
+    int x;
+    int y;
+public:
+    Point(int x = 0, int y = 0) : x(x), y(y) {}
+    void print() { cout << '(' << x << ', ' << y << ')' << endl; }
 };
 
 class Vector
 {
-    int size;
-    //Point * points;
     List<Point> points;
+    int size;
 };
 
 

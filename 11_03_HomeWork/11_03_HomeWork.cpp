@@ -2,7 +2,6 @@
 #include <conio.h>
 using namespace std;
 
-
 /* Завдання 1:
 Розробити додаток, що імітує чергу друку принтера.
 Програма надає меню з наступними можливостями:
@@ -24,8 +23,6 @@ using namespace std;
 
 void clear() { system("cls"); }
 
-
-
 template <typename T>
 class Queue {
     struct Paper {
@@ -38,7 +35,6 @@ class Queue {
     };
     Paper* papers;
     int size;
-
 public:
     Queue() = default;
     Queue(Paper item) {
@@ -107,7 +103,7 @@ public:
 
 int main()
 {
-	Queue q;
+	Queue<int> q;
     int choice = 1;
 
     while (choice != 0) {
@@ -122,25 +118,25 @@ int main()
         switch (choice) {
         case 1:
             q.printAll();
-            cout << "\nPress any key to continue..." << endl;
+            cout << "\nPress any key to continue...";
             _getch();
             clear();
             break;
         case 2:
             q.EnterPaper();
-            cout << "\nPress any key to continue..." << endl;
+            cout << "\nPress any key to continue...";
             _getch();
             clear();
             break;
         case 3:
             q.PrintPaper();
-            cout << "\nPress any key to continue..." << endl;
+            cout << "\nPress any key to continue...";
             _getch();
             clear();
             break;
         case 4:
             while (q.PrintPaper()) { q.PrintPaper(); }
-            cout << "\nPress any key to continue..." << endl;
+            cout << "\nPress any key to continue...";
             _getch();
             clear();
             break;

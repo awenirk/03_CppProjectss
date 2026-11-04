@@ -14,7 +14,9 @@ class Point {
     int y;
 public:
     Point(int x = 0, int y = 0) : x(x), y(y) {}
-    void print() { cout << '(' << x << ', ' << y << ')'; }
+    void printP()const {
+        cout << "(" << x << ", " << y << ") ";
+    }
 };
 
 template <typename T>
@@ -83,10 +85,11 @@ public:
 #pragma endregion
 
 #pragma region other_functions
-    void print() {
+    Node* getHead() { return head; }
+    void printL() {
         Node* current = head;
         while (current != nullptr) {
-            current->value.print();
+            current->value.printP();
             current = current->next;
         }
         cout << endl;
@@ -120,7 +123,7 @@ class Vector {
     int size;
 public:
     Vector(): points(), size(0) {}
-    void print() { points.print(); }
+    void print() { points.printL(); }
     void AddPointToHead(Point point) { points.AddToHead(point); }
     void AddPointToTail(Point point) { points.AddToTail(point); }
     void deletePointFromHead() { points.deleteFromHead(); }
@@ -138,10 +141,10 @@ int main()
 
     v.AddPointToTail(Point(3, 4));
     v.print();
+    v.AddPointToTail(Point(5, 82));
+    v.print();
 
     v.deletePointFromHead();
     v.print();
 
-
-    
 }

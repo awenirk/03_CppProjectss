@@ -22,7 +22,7 @@ public:
     bool isEmpty()const { return count == 0; }
     void Enqueue(Element el) {
         int index = 0;
-        while (index < count && elements[index].priority < el.priority)index++;
+        while (index < count && elements[index].priority > el.priority)index++;
         Element* temp = new Element[count + 1];
         for (int i = 0; i < index; i++) {
             temp[i] = elements[i];

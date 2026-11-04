@@ -24,17 +24,18 @@ using namespace std;
 
 void clear() { system("cls"); }
 
-struct Paper {
-    string fileName;
-    int priority;
 
-    void print() {
-        cout << priority << ' ' << fileName << " | ";
-    }
-};
 
-// template <typename T>
+template <typename T>
 class Queue {
+    struct Paper {
+        string fileName;
+        int priority;
+
+        void print() {
+            cout << priority << ' ' << fileName << " | ";
+        }
+    };
     Paper* papers;
     int size;
 

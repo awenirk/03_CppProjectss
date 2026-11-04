@@ -115,8 +115,7 @@ public:
 
 };
 
-class Vector
-{
+class Vector {
     List<Point> points;
     int size;
 public:

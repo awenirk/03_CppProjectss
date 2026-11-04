@@ -28,5 +28,7 @@
   <Project Path="11_01_Queue/11_01_Queue.vcxproj" Id="7f201e26-d40d-4c78-83ce-b415194f5b99" />
   <Project Path="11_02_ClassWork/11_02_ClassWork.vcxproj" Id="cdfb491e-06c0-485f-b4a6-57f7c49557e9" />
   <Project Path="11_03_HomeWork/11_03_HomeWork.vcxproj" Id="32978e7b-2667-430b-b89c-e50a5e4955eb" />
+  <Project Path="11_04_HomeWork/11_04_HomeWork.vcxproj" Id="995aa0fe-070a-4070-b3a2-01b9e90ec9b1" />
   <Project Path="12_01_Single_Linked_List/12_01_Single_Linked_List.vcxproj" Id="daac7531-3937-4f51-a994-d6fee45aeb72" />
+  <Project Path="12_02_HomeWork/12_02_HomeWork.vcxproj" Id="9cc836ef-ea02-4a9a-99f1-58b84535f1aa" />
 </Solution>

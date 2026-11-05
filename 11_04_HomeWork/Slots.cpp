@@ -117,7 +117,6 @@ void Slots::showResults() const {
 #pragma endregion
  
 #pragma region slot_functions
-// choice random item from enum Item
 Item Slots::randomChar() {
     int temp = 1 + rand() % 100;
     Item item = CHERRY;
@@ -129,7 +128,6 @@ Item Slots::randomChar() {
     return item;
 }
 
-// fill all reels
 void Slots::fillReels() {
     Item* temp1 = new Item[5];
     Item* temp2 = new Item[5];
@@ -151,20 +149,35 @@ void Slots::fillReels() {
     endReels = temp3;
 }
 
-// final spin animation
 void Slots::spin() {
-    Item finalReels1[5];
-    Item finalReels2[5];
-    Item finalReels3[5];
-    for (int i = 0; i < 10; i++) {
-        Clear();
-        fillReels();
-        print();
-        Sleep(150);
+    fillReels();
+    Item FinalBeginReels[5];
+    Item FinalReels[5];
+    Item FinalEndReels[5];
+    for (int i = 0; i < 5; i++) {
+        FinalBeginReels[i] = beginReels[i];
+        FinalReels[i] = reels[i];
+        FinalEndReels[i] = endReels[i];
+    }
+    print();
+    for (int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 13; i++) {
+            for (int i = 0; i < 5; i++) {
+                FinalBeginReels[i] = randomChar();
+                FinalReels[i] = randomChar();
+                FinalEndReels[i] = randomChar();
+            }
+            Clear();
+            print();
+            Sleep(120);
+        }
+        beginReels[i] = FinalBeginReels[i];
+        reels[i] = FinalReels[i];
+        endReels[i] = FinalEndReels[i];
     }
 }
 
-// check position to win
 void Slots::isWin() {
     if (true) {
         cout << "You win: " << bet * 1 << endl;
@@ -174,6 +187,5 @@ void Slots::isWin() {
     }
 }
 
-// asks what to deposit
 void Slots::dodep() {}
 #pragma endregion

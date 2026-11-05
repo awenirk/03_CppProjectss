@@ -18,6 +18,7 @@ int main()
 {
     srand(time(0));
     cout << "Start!\n";
+    Sleep(500);
 
     Slots s(100);
     // s.showResults();

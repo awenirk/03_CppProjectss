@@ -1,7 +1,23 @@
 #include "Slots.h"
 
 #pragma region table_print
-void BegginLine(Table& T) {
+string getSymbol(Item item) {
+    switch (item) {
+    case CHERRY:
+        return "CHERRY";
+    case LEMON:
+        return "LEMON";
+    case BAR:
+        return " BAR";
+    case DIAMOND:
+        return "DIAMOND";
+    case SEVEN:
+        return " SEVEN";
+    default:
+        return "?";
+    }
+}
+void BegginLine(const Table& T) {
     cout << (char)201;
     for (int i = 0; i < T.n1; i++)
         cout << (char)205;
@@ -19,15 +35,15 @@ void BegginLine(Table& T) {
         cout << (char)205;
     cout << (char)187 << endl;
 }
-void textLine(Table& T) {
-    cout << (char)186 << " " << left << setw(T.n1 - 1) << T.t1;
-    cout << (char)186 << " " << left << setw(T.n2 - 1) << T.t2;
-    cout << (char)186 << " " << left << setw(T.n3 - 1) << T.t3;
-    cout << (char)186 << "  " << left << setw(T.n4 - 2) << T.t4;
-    cout << (char)186 << " " << left << setw(T.n5 - 1) << T.t5;
+void textLine(const Table& T) {
+    cout << (char)186 << " " << left << setw(T.n1 - 1) << getSymbol(T.t1);
+    cout << (char)186 << " " << left << setw(T.n2 - 1) << getSymbol(T.t2);
+    cout << (char)186 << " " << left << setw(T.n3 - 1) << getSymbol(T.t3);
+    cout << (char)186 << " " << left << setw(T.n4 - 1) << getSymbol(T.t4);
+    cout << (char)186 << " " << left << setw(T.n5 - 1) << getSymbol(T.t5);
     cout << (char)186 << endl;
 }
-void fillLine(Table& T) {
+void fillLine(const Table& T) {
     cout << (char)204;
     for (int i = 0; i < T.n1; i++)
         cout << (char)205;
@@ -45,7 +61,7 @@ void fillLine(Table& T) {
         cout << (char)205;
     cout << (char)185 << endl;
 }
-void EndLine(Table& T) {
+void EndLine(const Table& T) {
     cout << (char)200;
     for (int i = 0; i < T.n1; i++)
         cout << (char)205;
@@ -68,17 +84,23 @@ void EndLine(Table& T) {
 #pragma region functions
 void Clear() { system("cls"); }
 void Slots::print() const {
-    if (reels == nullptr) {
-        cout << "Error! Reels not filled." << endl;
-        return;
-    }
-    // тут ше зробити табличний гарний вивід
+    if (reels == nullptr) { cout << "Error! Reels not filled." << endl; }
     else {
-        cout << setw(5) << reels[0] << " |";
-        cout << setw(5) << reels[1] << " |";
-        cout << setw(5) << reels[2] << " |";
-        cout << setw(5) << reels[3] << " |";
-        cout << setw(5) << reels[4];
+        Table T(8,8,8,8,8);
+        BegginLine(T);
+
+        T.setTs(beginReels);
+        textLine(T);
+        fillLine(T);
+
+        T.setTs(reels);
+        textLine(T);
+        fillLine(T);
+
+        T.setTs(endReels);
+        textLine(T);
+
+        EndLine(T);
     }
 }
 void Slots::showMoney() const {
@@ -93,7 +115,7 @@ void Slots::showResults() const {
     cout << "Your total lose: " << score.totalLose << endl;
 }
 #pragma endregion
-
+ 
 #pragma region slot_functions
 // choice random item from enum Item
 Item Slots::randomChar() {
@@ -109,44 +131,37 @@ Item Slots::randomChar() {
 
 // fill all reels
 void Slots::fillReels() {
-    Item* temp = new Item[5];
+    Item* temp1 = new Item[5];
+    Item* temp2 = new Item[5];
+    Item* temp3 = new Item[5];
     for (int i = 0; i < 5; i++) {
-        temp[i] = randomChar();
+        temp1[i] = randomChar();
+        temp2[i] = randomChar();
+        temp3[i] = randomChar();
         // cout << temp[i] << ' ';
     }
     if (reels != nullptr)
         delete[] reels;
-    reels = temp;
+    if (beginReels != nullptr)
+        delete[] beginReels;
+    if (endReels != nullptr)
+        delete[] endReels;
+    beginReels = temp1;
+    reels = temp2;
+    endReels = temp3;
 }
 
 // final spin animation
 void Slots::spin() {
-    Sleep(1000);
-    cout << "Start!";
-    Sleep(500);
-    Clear();
-
-    cout << '#';
-    Sleep(150);
-    Clear();
-    cout << '@';
-    Sleep(150);
-    Clear();
-    cout << ')';
-    Sleep(150);
-    Clear();
-    cout << '|';
-    Sleep(150);
-    Clear();
-    cout << '&';
-    Sleep(150);
-    Clear();
-    cout << '%';
-    Sleep(150);
-    Clear();
-
-    cout << 1 << endl;
-    Sleep(500);
+    Item finalReels1[5];
+    Item finalReels2[5];
+    Item finalReels3[5];
+    for (int i = 0; i < 10; i++) {
+        Clear();
+        fillReels();
+        print();
+        Sleep(150);
+    }
 }
 
 // check position to win
@@ -162,4 +177,3 @@ void Slots::isWin() {
 // asks what to deposit
 void Slots::dodep() {}
 #pragma endregion
-

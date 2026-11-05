@@ -6,10 +6,6 @@
 #include <string>
 using namespace std;
 
-struct Table {
-    int n1, n2, n3, n4, n5;
-    const char* t1, * t2, * t3, * t4, * t5;
-};
 enum Item {
     CHERRY = 1,
     LEMON = 2,
@@ -24,37 +20,49 @@ struct Score {
     int totalWon;    // $
     int totalLose;   // $
 };
+struct Table {
+    int n1, n2, n3, n4, n5;
+    Item t1, t2, t3, t4, t5;
+    Table(int n1): n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {}
+    Table(int n1, int n2, int n3, int n4, int n5): n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {}
+    void setTs(Item* reels) {
+        this->t1 = reels[0];
+        this->t2 = reels[1];
+        this->t3 = reels[2];
+        this->t4 = reels[3];
+        this->t5 = reels[4];
+    }
+};
 
 class Slots {
+    Item* beginReels;
     Item* reels;
-    Item* topSymbols;
-    Item* bottomSymbols;
+    Item* endReels;
     int money;
     int bet;
     int lastBet;
     Score score;
 public:
 #pragma region Constructors
-    Slots() : reels(nullptr), money(1000), bet(0), lastBet(0), score{} {}
-    Slots(int money) : reels(nullptr), money(money), bet(0), lastBet(0), score{} {}
+    Slots() : beginReels(nullptr), reels(nullptr), endReels(nullptr),
+        money(1000), bet(0), lastBet(0), score{} {}
+    Slots(int money) : beginReels(nullptr), reels(nullptr), endReels(nullptr),
+        money(money), bet(0), lastBet(0), score{} {}
     ~Slots() {
+        if (beginReels != nullptr) delete[] beginReels;
         if (reels != nullptr) delete[] reels;
-        if (topSymbols != nullptr) delete[] topSymbols;
-        if (bottomSymbols != nullptr) delete[] bottomSymbols;
+        if (endReels != nullptr) delete[] endReels;
     }
 #pragma endregion
-
 #pragma region getters_setters
     int getMoney()const { return money; }
     void setMoney(int money) { this->money = money; }
 #pragma endregion
-
 #pragma region functions
     void print()const;
     void showMoney()const;
     void showResults()const;
 #pragma endregion
-
 #pragma region slot_functions
     // choice random item from enum Item
     Item randomChar();
@@ -67,5 +75,4 @@ public:
     // asks what to deposit
     void dodep();
 #pragma endregion
-
 };

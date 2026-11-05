@@ -22,11 +22,10 @@ int main()
     Slots s(100);
     // s.showResults();
 
-    s.fillReels();
-    cout << endl;
-    s.print();
+    //s.fillReels();
+    //s.print();
 
-
+    s.spin();
 
 
     /*
@@ -48,5 +47,7 @@ int main()
         }
     }
     */
+
+    Sleep(500);
     cout << "\nGoodbye!\n";
 }

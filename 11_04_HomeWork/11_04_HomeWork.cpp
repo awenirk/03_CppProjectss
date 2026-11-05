@@ -14,8 +14,6 @@
 // I decided not to struggle with the queue, but to write my own class.
 // I decided not to struggle with the queue, but to write my own class.
 
-
-
 int main()
 {
     srand(time(0));
@@ -50,6 +48,5 @@ int main()
         }
     }
     */
-
     cout << "\nGoodbye!\n";
 }

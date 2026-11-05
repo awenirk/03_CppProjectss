@@ -6,7 +6,10 @@
 #include <string>
 using namespace std;
 
-void Clear() { system("cls"); }
+struct Table {
+    int n1, n2, n3, n4, n5;
+    const char* t1, * t2, * t3, * t4, * t5;
+};
 enum Item {
     CHERRY = 1,
     LEMON = 2,
@@ -32,14 +35,18 @@ class Slots {
     Score score;
 public:
 #pragma region Constructors
-    Slots() : reels(nullptr), money(1000), bet(0), score{} {}
-    Slots(int money) : reels(nullptr), money(money), bet(0), score{} {}
-    ~Slots() { if (reels != nullptr) delete[] reels; }
+    Slots() : reels(nullptr), money(1000), bet(0), lastBet(0), score{} {}
+    Slots(int money) : reels(nullptr), money(money), bet(0), lastBet(0), score{} {}
+    ~Slots() {
+        if (reels != nullptr) delete[] reels;
+        if (topSymbols != nullptr) delete[] topSymbols;
+        if (bottomSymbols != nullptr) delete[] bottomSymbols;
+    }
 #pragma endregion
 
 #pragma region getters_setters
     int getMoney()const { return money; }
-    int setMoney(int money) { this->money = money; }
+    void setMoney(int money) { this->money = money; }
 #pragma endregion
 
 #pragma region functions

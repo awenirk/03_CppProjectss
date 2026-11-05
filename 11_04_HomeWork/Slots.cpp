@@ -1,6 +1,72 @@
 #include "Slots.h"
-#pragma region MyRegion
 
+#pragma region table_print
+void BegginLine(Table& T) {
+    cout << (char)201;
+    for (int i = 0; i < T.n1; i++)
+        cout << (char)205;
+    cout << (char)203;
+    for (int i = 0; i < T.n2; i++)
+        cout << (char)205;
+    cout << (char)203;
+    for (int i = 0; i < T.n3; i++)
+        cout << (char)205;
+    cout << (char)203;
+    for (int i = 0; i < T.n4; i++)
+        cout << (char)205;
+    cout << (char)203;
+    for (int i = 0; i < T.n5; i++)
+        cout << (char)205;
+    cout << (char)187 << endl;
+}
+void textLine(Table& T) {
+    cout << (char)186 << " " << left << setw(T.n1 - 1) << T.t1;
+    cout << (char)186 << " " << left << setw(T.n2 - 1) << T.t2;
+    cout << (char)186 << " " << left << setw(T.n3 - 1) << T.t3;
+    cout << (char)186 << "  " << left << setw(T.n4 - 2) << T.t4;
+    cout << (char)186 << " " << left << setw(T.n5 - 1) << T.t5;
+    cout << (char)186 << endl;
+}
+void fillLine(Table& T) {
+    cout << (char)204;
+    for (int i = 0; i < T.n1; i++)
+        cout << (char)205;
+    cout << (char)206;
+    for (int i = 0; i < T.n2; i++)
+        cout << (char)205;
+    cout << (char)206;
+    for (int i = 0; i < T.n3; i++)
+        cout << (char)205;
+    cout << (char)206;
+    for (int i = 0; i < T.n4; i++)
+        cout << (char)205;
+    cout << (char)206;
+    for (int i = 0; i < T.n5; i++)
+        cout << (char)205;
+    cout << (char)185 << endl;
+}
+void EndLine(Table& T) {
+    cout << (char)200;
+    for (int i = 0; i < T.n1; i++)
+        cout << (char)205;
+    cout << (char)202;
+    for (int i = 0; i < T.n2; i++)
+        cout << (char)205;
+    cout << (char)202;
+    for (int i = 0; i < T.n3; i++)
+        cout << (char)205;
+    cout << (char)202;
+    for (int i = 0; i < T.n4; i++)
+        cout << (char)205;
+    cout << (char)202;
+    for (int i = 0; i < T.n5; i++)
+        cout << (char)205;
+    cout << (char)188 << endl;
+}
+#pragma endregion
+
+#pragma region functions
+void Clear() { system("cls"); }
 void Slots::print() const {
     if (reels == nullptr) {
         cout << "Error! Reels not filled." << endl;
@@ -28,7 +94,7 @@ void Slots::showResults() const {
 }
 #pragma endregion
 
-#pragma region MyRegion
+#pragma region slot_functions
 // choice random item from enum Item
 Item Slots::randomChar() {
     int temp = 1 + rand() % 100;
@@ -86,12 +152,10 @@ void Slots::spin() {
 // check position to win
 void Slots::isWin() {
     if (true) {
-        return;
         cout << "You win: " << bet * 1 << endl;
     }
     else {
         cout << "You lose: " << bet << endl;
-
     }
 }
 

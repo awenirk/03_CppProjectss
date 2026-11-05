@@ -150,30 +150,35 @@ void Slots::fillReels() {
 }
 
 void Slots::spin() {
-    fillReels();
     Item FinalBeginReels[5];
     Item FinalReels[5];
     Item FinalEndReels[5];
+
     for (int i = 0; i < 5; i++) {
-        FinalBeginReels[i] = beginReels[i];
-        FinalReels[i] = reels[i];
-        FinalEndReels[i] = endReels[i];
+        FinalBeginReels[i] = randomChar();
+        FinalReels[i] = randomChar();
+        FinalEndReels[i] = randomChar();
     }
-    print();
-    for (int i = 0; i < 5; i++) {
-        for (int i = 0; i < 13; i++) {
-            for (int i = 0; i < 5; i++) {
-                FinalBeginReels[i] = randomChar();
-                FinalReels[i] = randomChar();
-                FinalEndReels[i] = randomChar();
+
+    for (int stopped = 0; stopped < 5; stopped++) {
+        for (int spin = 0; spin < 13; spin++) {
+            for (int reel = stopped; reel < 5; reel++) {
+                beginReels[reel] = randomChar();
+                reels[reel] = randomChar();
+                endReels[reel] = randomChar();
             }
+
             Clear();
             print();
-            Sleep(120);
+            Sleep(60);
         }
-        beginReels[i] = FinalBeginReels[i];
-        reels[i] = FinalReels[i];
-        endReels[i] = FinalEndReels[i];
+
+        beginReels[stopped] = FinalBeginReels[stopped];
+        reels[stopped] = FinalReels[stopped];
+        endReels[stopped] = FinalEndReels[stopped];
+
+        Clear();
+        print();
     }
 }
 

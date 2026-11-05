@@ -21,9 +21,9 @@ int main()
     Sleep(500);
 
     Slots s(100);
-    // s.showResults();
+    s.showResults();
 
-    //s.fillReels();
+    s.fillReels();
     //s.print();
 
     s.spin();

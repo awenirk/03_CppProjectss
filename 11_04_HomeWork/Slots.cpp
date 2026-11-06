@@ -82,7 +82,6 @@ void EndLine(const Table& T) {
 #pragma endregion
 
 #pragma region functions
-void Clear() { system("cls"); }
 void Slots::print() const {
     if (reels == nullptr) { cout << "Error! Reels not filled." << endl; }
     else {

@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class List {
 private:
 	struct Node {
@@ -11,6 +12,7 @@ private:
 		Node(Node* p, int v, Node* n): prev(p), value(v), next(n) {}
 	};
 	Node* head;
+	T value;
 	Node* tail;
 
 public:
@@ -27,6 +29,7 @@ public:
 		}
 	}
 #pragma endregion
+
 #pragma region functions
 	bool isEmpty()const {
 		return head == nullptr;
@@ -46,8 +49,9 @@ public:
 		cout << endl;
 	}
 #pragma endregion
+
 #pragma region add_del
-	void AddToHead(int value) {
+	void AddToHead(T value) {
 		Node* newNode = new Node(nullptr, value, head);
 		if (isEmpty()) { head = tail = newNode; }
 		else {
@@ -56,7 +60,7 @@ public:
 		}
 		
 	}
-	void AddToTail(int value) {
+	void AddToTail(T value) {
 		Node* newNode = new Node(tail, value, nullptr);
 		if (isEmpty()) { head = tail = newNode; }
 		else {
@@ -91,15 +95,11 @@ public:
 #pragma endregion
 };
 
-
-
-
 int main()
 {
-	List l;
+	List<int> l;
 	for (int i = 0; i < 10; i++) {
 		l.AddToHead(i);
 	}
 	l.print();
-
 }

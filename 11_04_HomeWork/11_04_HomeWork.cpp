@@ -35,7 +35,6 @@ int main()
             break;
         case 1:
             s.spin();
-            Sleep(2500);
             s.isWin();
             cout << "\nEnter to continue...";
             _getch();
@@ -48,6 +47,7 @@ int main()
             }
             else {
                 s.seteBet(tempBet);
+                s.setLastBet(tempBet);
                 cout << "Bet set successful!" << endl;
             }
             break;
@@ -65,8 +65,8 @@ int main()
             break;
         }
     }
-    if (s.getMoney() <= 0) { cout << "You have gone bankrupt.\n"; }
-    else if (s.getMoney() > 0 and s.getMoney() < 1000000) { cout << "You not lose!\n"; }
-    else if (s.getMoney() > 1000000) { cout << "Congratulations, you beat the game.\n"; }
+    if (s.getMoney() <= 0) { cout << "\nYou have gone bankrupt.\n"; }
+    else if (s.getMoney() > 0 and s.getMoney() < 1000000) { cout << "\nYou not lose!\n"; }
+    else if (s.getMoney() > 1000000) { cout << "\nCongratulations, you beat the game.\n"; }
     cout << "Goodbye!\n";
 }

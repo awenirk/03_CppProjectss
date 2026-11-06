@@ -46,9 +46,9 @@ class Slots {
 public:
 #pragma region Constructors
     Slots() : beginReels(nullptr), reels(nullptr), endReels(nullptr),
-        money(1000), bet(1), lastBet(1), score{} {}
+        money(1000), bet(10), lastBet(0), score{} {}
     Slots(int money) : beginReels(nullptr), reels(nullptr), endReels(nullptr),
-        money(money), bet(1), lastBet(1), score{} {}
+        money(money), bet(10), lastBet(0), score{} {}
     ~Slots() {
         if (beginReels != nullptr) delete[] beginReels;
         if (reels != nullptr) delete[] reels;
@@ -59,6 +59,7 @@ public:
     int getMoney()const { return money; }
     void setMoney(int money) { this->money = money; }
     void seteBet(int bet) { this->bet = bet; }
+    void setLastBet(int lastBet) { this->lastBet = lastBet; }
 #pragma endregion
 #pragma region functions
     void print()const;

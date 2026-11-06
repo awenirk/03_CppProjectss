@@ -8,6 +8,10 @@
 Виконати дане завдання з використанням Queue
 (данімічна структура даних – черга)
 */
+
+// export import to file
+// 
+
 int main()
 {
     srand(time(0));
@@ -52,6 +56,7 @@ int main()
             }
             break;
         case 3:
+            system("cls");
             s.showMoney();
             cout << "\nEnter to continue...";
             _getch();

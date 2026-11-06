@@ -136,7 +136,7 @@ void Slots::showStats() const {
     cout << "Your total lose: " << score.totalLose << endl;
 }
 #pragma endregion
- 
+
 #pragma region slot_functions
 Item Slots::randomChar() {
     int temp = 1 + rand() % 100;

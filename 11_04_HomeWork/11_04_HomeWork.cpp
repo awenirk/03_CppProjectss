@@ -19,15 +19,15 @@ int main()
     cout << "Welcome to my game!\n";
     Sleep(1200);
 
-    while (choice != 0 and s.getMoney() > 0) {
+    while (choice != 0 && s.getMoney() > 0 && s.getMoney() < 1000000) {
         system("cls");
-        cout << "-=-=-=- Menu: -=-=-=-" << endl;
-        cout << "1. Spin" << endl;
-        cout << "2. Edit bet" << endl;
-        cout << "3. Show money" << endl;
-        cout << "4. Show stats" << endl;
-        cout << "0. Exit" << endl;
-        cout << "-=-=-=-=-=-=-=-=-=-=-" << endl;
+        cout << "-=-=-=- Menu: -=-=-=-\n";
+        cout << "1. Spin\n";
+        cout << "2. Edit bet\n";
+        cout << "3. Show money\n";
+        cout << "4. Show stats\n";
+        cout << "0. Exit\n";
+        cout << "-=-=-=-=-=-=-=-=-=-=-\n";
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice) {
@@ -43,7 +43,13 @@ int main()
         case 2:
             cout << "Enter bet: ";
             cin >> tempBet;
-            s.seteBet(tempBet);
+            if (tempBet > s.getMoney()) {
+                cout << "Bet can`t be more than your money!" << endl;
+            }
+            else {
+                s.seteBet(tempBet);
+                cout << "Bet set successful!" << endl;
+            }
             break;
         case 3:
             s.showMoney();
@@ -59,5 +65,8 @@ int main()
             break;
         }
     }
-    cout << "\nGoodbye!\n";
+    if (s.getMoney() <= 0) { cout << "You have gone bankrupt.\n"; }
+    else if (s.getMoney() > 0 and s.getMoney() < 1000000) { cout << "You not lose!\n"; }
+    else if (s.getMoney() > 1000000) { cout << "Congratulations, you beat the game.\n"; }
+    cout << "Goodbye!\n";
 }

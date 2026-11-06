@@ -46,9 +46,9 @@ class Slots {
 public:
 #pragma region Constructors
     Slots() : beginReels(nullptr), reels(nullptr), endReels(nullptr),
-        money(1000), bet(0), lastBet(0), score{} {}
+        money(1000), bet(1), lastBet(1), score{} {}
     Slots(int money) : beginReels(nullptr), reels(nullptr), endReels(nullptr),
-        money(money), bet(0), lastBet(0), score{} {}
+        money(money), bet(1), lastBet(1), score{} {}
     ~Slots() {
         if (beginReels != nullptr) delete[] beginReels;
         if (reels != nullptr) delete[] reels;

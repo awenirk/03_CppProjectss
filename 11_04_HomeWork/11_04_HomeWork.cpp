@@ -17,15 +17,17 @@ int main()
     Slots s(1000);
 
     cout << "Welcome to my game!\n";
-    Sleep(500);
+    Sleep(1200);
 
-    while (choice != 0 or gameWin != true) {
-        cout << "\n-=-=-=- Menu: -=-=-=-" << endl;
-        cout << "0. Exit" << endl;
+    while (choice != 0 and s.getMoney() > 0) {
+        system("cls");
+        cout << "-=-=-=- Menu: -=-=-=-" << endl;
         cout << "1. Spin" << endl;
         cout << "2. Edit bet" << endl;
-        cout << "3. None" << endl;
+        cout << "3. Show money" << endl;
         cout << "4. Show stats" << endl;
+        cout << "0. Exit" << endl;
+        cout << "-=-=-=-=-=-=-=-=-=-=-" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice) {
@@ -33,27 +35,29 @@ int main()
             break;
         case 1:
             s.spin();
+            Sleep(2500);
             s.isWin();
+            cout << "\nEnter to continue...";
+            _getch();
             break;
         case 2:
-            cout << "Enter bet:";
+            cout << "Enter bet: ";
             cin >> tempBet;
             s.seteBet(tempBet);
             break;
         case 3:
-            // nedodelano
+            s.showMoney();
+            cout << "\nEnter to continue...";
+            _getch();
             break;
         case 4:
-            Clear();
             s.showStats();
+            cout << "\nEnter to continue...";
             _getch();
             break;
         default:
             break;
         }
     }
-    
-    Sleep(500);
     cout << "\nGoodbye!\n";
-    Sleep(500);
 }

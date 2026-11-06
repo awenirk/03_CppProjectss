@@ -6,8 +6,6 @@
 #include <string>
 using namespace std;
 
-void Clear() { system("cls"); }
-
 enum Item {
     CHERRY = 0,
     LEMON = 1,
@@ -58,6 +56,7 @@ public:
     }
 #pragma endregion
 #pragma region getters_setters
+    int getMoney()const { return money; }
     void setMoney(int money) { this->money = money; }
     void seteBet(int bet) { this->bet = bet; }
 #pragma endregion

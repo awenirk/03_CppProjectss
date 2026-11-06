@@ -1,5 +1,22 @@
 #include "Slots.h"
 
+#pragma region Constructors
+Table::Table(int n1) : n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {
+    t1 = NONE;
+    t2 = NONE;
+    t3 = NONE;
+    t4 = NONE;
+    t5 = NONE;
+}
+Table::Table(int n1, int n2, int n3, int n4, int n5) : n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {
+    t1 = NONE;
+    t2 = NONE;
+    t3 = NONE;
+    t4 = NONE;
+    t5 = NONE;
+}
+#pragma endregion
+
 #pragma region table_print
 string getSymbol(Item item) {
     switch (item) {
@@ -84,6 +101,7 @@ void EndLine(const Table& T) {
 #pragma endregion
 
 #pragma region functions
+void Clear() { system("cls"); }
 void Slots::print() const {
     if (reels == nullptr) { cout << "Error! Reels not filled." << endl; }
     else {
@@ -105,9 +123,11 @@ void Slots::print() const {
     }
 }
 void Slots::showMoney() const {
-    cout << "Your money:" << money << endl;
+    cout << "Your money: " << money << endl;
 }
 void Slots::showStats() const {
+    Clear();
+    cout << "Bet: " << bet << endl;
     cout << "Last bet:" << lastBet << endl;
     cout << "Your spin count: " << score.spinsCount << endl;
     cout << "Your wins count: " << score.winsCount << endl;
@@ -205,7 +225,7 @@ bool Slots::isWin() {
 
 
     if (wins < 3) {
-        cout << "You lose: " << bet << endl;
+        cout << "You lose =(" << endl;
         money -= bet;
         score.lossesCount++;
         score.totalLose += bet;
@@ -356,18 +376,3 @@ bool Slots::isWin() {
     return win;
 }
 #pragma endregion
-
-Table::Table(int n1) : n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {
-    t1 = NONE;
-    t2 = NONE;
-    t3 = NONE;
-    t4 = NONE;
-    t5 = NONE;
-}
-Table::Table(int n1, int n2, int n3, int n4, int n5) : n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {
-    t1 = NONE;
-    t2 = NONE;
-    t3 = NONE;
-    t4 = NONE;
-    t5 = NONE;
-}

@@ -64,15 +64,11 @@ public:
     void showResults()const;
 #pragma endregion
 #pragma region slot_functions
-    // choice random item from enum Item
     Item randomChar();
-    // fill all reels
     void fillReels();
-    // final spin animation
     void spin();
-    // check position to win
-    void isWin();
-    // asks what to deposit
+    bool isWin();
+    void enterBet();
     void dodep();
 #pragma endregion
 };

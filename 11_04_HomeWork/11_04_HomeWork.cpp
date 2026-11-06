@@ -10,7 +10,7 @@
 */
 
 // export import to file
-// 
+// exception bet
 
 int main()
 {

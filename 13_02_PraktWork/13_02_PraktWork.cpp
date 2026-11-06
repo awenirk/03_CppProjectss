@@ -19,9 +19,7 @@ struct Vagon
 Додати методи додавання вагона в початок/кінець та видалення з
 початку/кінця.
 Реалізувати конструктор копіювання
-
 3. Додати метод DeleteFromHead для класу двозв*язного списку.
-
 Завдання 4:
 На 12 балів зробити видалення по позиції та додавання по позиції
 */
@@ -31,13 +29,12 @@ class List {
 private:
 	struct Node {
 		Node* prev;
-		int value;
+        T value;
 		Node* next;
-		Node() : prev(nullptr), value(0), next(nullptr) {}
-		Node(Node* p, int v, Node* n) : prev(p), value(v), next(n) {}
+        Node() : prev(nullptr), value(), next(nullptr) {}
+        Node(Node* p, const T& v, Node* n) : prev(p), value(v), next(n) {}
 	};
 	Node* head;
-	T value;
 	Node* tail;
 
 public:
@@ -45,6 +42,19 @@ public:
 	List() {
 		head = tail = nullptr;
 	}
+    List(const List& other) : head(nullptr), tail(nullptr) {
+        for (Node* current = other.head; current != nullptr; current = current->next) {
+            AddToTail(current->value);
+        }
+    }
+    List& operator=(const List& other) {
+        if (this == &other) return *this;
+        while (!isEmpty()) deleteFromHead();
+        for (Node* current = other.head; current != nullptr; current = current->next) {
+            AddToTail(current->value);
+        }
+        return *this;
+    }
 	~List() {
 		Node* current = nullptr;
 		while (head != nullptr) {
@@ -59,20 +69,75 @@ public:
 	bool isEmpty()const {
 		return head == nullptr;
 	}
-	void print() {
-		/*
-		Node* current = head;
-		while (current != nullptr) {
-			cout << current->value << ' ';
-			current = current->next;
-		}
-		cout << endl;
-		*/
-		for (Node* i = head; i != nullptr; i = i->next) {
-			cout << i->value << ' ';
-		}
-		cout << endl;
-	}
+    template <typename Func>
+    void forEach(Func func) const {
+        for (Node* i = head; i != nullptr; i = i->next) {
+            func(i->value);
+        }
+    }
+    void deleteByPos(int pos) {
+        if (pos < 0) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+        Node* current = head;
+        for (int i = 0; i < pos; i++) {
+            if (current == nullptr) {
+                cout << "Position out of range!" << endl;
+                return;
+            }
+            current = current->next;
+        }
+        if (current != nullptr) {
+            if (current->prev != nullptr) {
+                current->prev->next = current->next;
+            }
+            else {
+                head = current->next;
+            }
+            if (current->next != nullptr) {
+                current->next->prev = current->prev;
+            }
+            else {
+                tail = current->prev;
+            }
+            delete current;
+        }
+        else {
+            cout << "Position out of range!" << endl;
+        }
+    }
+    void addByPos(int pos, T value) {
+        if (pos < 0) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+        if (pos == 0) {
+            AddToHead(value);
+            return;
+        }
+        Node* current = head;
+        for (int i = 0; i < pos - 1; i++) {
+            if (current == nullptr) {
+                cout << "Position out of range!" << endl;
+                return;
+            }
+            current = current->next;
+        }
+        if (current != nullptr) {
+            Node* newNode = new Node(current, value, current->next);
+            if (current->next != nullptr) {
+                current->next->prev = newNode;
+            }
+            else {
+                tail = newNode;
+            }
+            current->next = newNode;
+        }
+        else {
+            cout << "Position out of range!" << endl;
+        }
+    }
 #pragma endregion
 
 #pragma region add_del
@@ -95,27 +160,19 @@ public:
 	}
 	void deleteFromHead() {
 		if (isEmpty()) return;
-		if (head->next == nullptr) {
-			delete head;
-			head = tail = nullptr;
-		}
-		else {
-			head = head->next;
-			delete head;
-			head->prev = nullptr;
-		}
+        Node* oldHead = head;
+        head = head->next;
+        if (head == nullptr) tail = nullptr;
+        else head->prev = nullptr;
+        delete oldHead;
 	}
 	void deleteFromTail() {
 		if (isEmpty()) return;
-		if (tail->prev == nullptr) {
-			delete tail;
-			head = tail = nullptr;
-		}
-		else {
-			tail = tail->prev;
-			delete tail->next;
-			tail->next = nullptr;
-		}
+        Node* oldTail = tail;
+        tail = tail->prev;
+        if (tail == nullptr) head = nullptr;
+        else tail->next = nullptr;
+        delete oldTail;
 	}
 #pragma endregion
 };
@@ -133,25 +190,69 @@ private:
 	int countVagons;
 	List<Vagon> vagons;
 public:
+#pragma region constructors
 	Train(): model("No model"), countVagons(0) {}
 	Train(string model) : model(model), countVagons(0) {}
-	Train(Train v) : model(v.model), countVagons(0) {}
+    Train(const Train& t) : model(t.model), countVagons(t.countVagons), vagons(t.vagons) {}
+#pragma endregion
 
-	void show() {}
+#pragma region add_del
+    void addVagonToHead(Vagon v) {
+        vagons.AddToHead(v);
+        countVagons++;
+    }
+    void addVagonToTail(Vagon v) {
+        vagons.AddToTail(v);
+        countVagons++;
+    }
+    void deleteVagonFromHead() {
+        if (!vagons.isEmpty()) {
+            vagons.deleteFromHead();
+            countVagons--;
+        }
+    }
+    void deleteVagonFromTail() {
+        if (!vagons.isEmpty()) {
+            vagons.deleteFromTail();
+            countVagons--;
+        }
+    }
+#pragma endregion
 
-	void addVagonToHead(Vagon v) { vagons.AddToHead(v); }
-	void addVagonToTail(Vagon v) { vagons.AddToTail(v); }
-	void deleteVagonFromHead(Vagon v) { vagons.deleteFromHead(); }
-	void deleteVagonFromTail(Vagon v) { vagons.deleteFromTail(); }
+#pragma region functions
+	void show() {
+        cout << "Train model:" << model << endl;
+        cout << "Count vagons: " << countVagons << endl;
+        vagons.forEach([](const Vagon& vagon) {
+            cout << "Vagon " << vagon.vagonNum
+                << ", seats: " << vagon.countSeat
+                << ", passengers: " << vagon.countPasangers << endl;
+        });
+    }
+    void deleteByPosition(int position) {
+        if (position < 0 || position >= countVagons) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+        if (position == 0) {
+            deleteVagonFromHead();
+        }
+        else if (position == countVagons - 1) {
+            deleteVagonFromTail();
+        }
+        else {
+            vagons.deleteByPos(position);
+            countVagons--;
+        }
+    }
+#pragma endregion
+
 };
 
 
 int main()
 {
-	List<int> l;
-	for (int i = 0; i < 10; i++) {
-		l.AddToHead(i);
-	}
-	l.print();
+    Train t("Express");
+    // t.show();
 
 }

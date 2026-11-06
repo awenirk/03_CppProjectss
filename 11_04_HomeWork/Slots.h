@@ -22,10 +22,9 @@ struct Score {
     int totalWon;    // $
     int totalLose;   // $
 };
-class Table {
+struct Table {
     int n1, n2, n3, n4, n5;
     Item t1, t2, t3, t4, t5;
-public:
     Table(int n1): n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {}
     Table(int n1, int n2, int n3, int n4, int n5): n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {}
     void setTs(Item* reels) {

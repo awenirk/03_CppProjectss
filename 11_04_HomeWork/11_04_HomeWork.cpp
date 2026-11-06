@@ -20,7 +20,7 @@ int main()
     Sleep(500);
 
     while (choice != 0 or gameWin != true) {
-        cout << "\n-=-=-=- Menu: -=-=-=-"
+        cout << "\n-=-=-=- Menu: -=-=-=-" << endl;
         cout << "0. Exit" << endl;
         cout << "1. Spin" << endl;
         cout << "2. Edit bet" << endl;

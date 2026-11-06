@@ -32,4 +32,5 @@
   <Project Path="12_01_Single_Linked_List/12_01_Single_Linked_List.vcxproj" Id="daac7531-3937-4f51-a994-d6fee45aeb72" />
   <Project Path="12_02_HomeWork/12_02_HomeWork.vcxproj" Id="9cc836ef-ea02-4a9a-99f1-58b84535f1aa" />
   <Project Path="12_03_HomeWork/12_03_HomeWork.vcxproj" Id="905d10d7-5619-4461-87c2-fd86864eaaeb" />
+  <Project Path="13_01_TwoLinkedList/13_01_TwoLinkedList.vcxproj" Id="8e28ff8d-4cb9-4c27-b67b-646a8371bdb5" />
 </Solution>

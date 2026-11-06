@@ -223,7 +223,6 @@ bool Slots::isWin() {
         }
     }
 
-
     if (wins < 3) {
         cout << "You lose =(" << endl;
         money -= bet;
@@ -232,7 +231,6 @@ bool Slots::isWin() {
         win = false;
     }
     else {
-        cout << "Your bet: " << bet << endl;
         money -= bet;
         score.winsCount++;
         win = true;
@@ -241,11 +239,13 @@ bool Slots::isWin() {
             cout << "Three in a row!" << endl;
             switch (winningSymbol) {
             case 0:
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 0.5 - bet << endl;
                 money = money + (bet * 0.5);
                 score.totalWon += (bet * 0.5);
                 break;
             case 1:
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 1 - bet << endl;
                 money = money + (bet * 1);
                 score.totalWon += (bet * 1);
@@ -253,6 +253,7 @@ bool Slots::isWin() {
             case 2:
                 cout << "Chance is: 2.89%" << endl;
                 cout << "It will drop 1 in 34 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 2 - bet << endl;
                 money = money + (bet * 2);
                 score.totalWon += (bet * 2);
@@ -260,6 +261,7 @@ bool Slots::isWin() {
             case 3:
                 cout << "Chance is: 0.29% !!!" << endl;
                 cout << "It will drop 1 in 337 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 6 - bet << endl;
                 money = money + (bet * 6);
                 score.totalWon += (bet * 6);
@@ -267,6 +269,7 @@ bool Slots::isWin() {
             case 4:
                 cout << "Chance is: 0.0076% !!!" << endl;
                 cout << "It will drop 1 in 13.015 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 15 - bet << endl;
                 money = money + (bet * 15);
                 score.totalWon += (bet * 15);
@@ -281,6 +284,7 @@ bool Slots::isWin() {
             case 0:
                 cout << "Chance is: 11.2%" << endl;
                 cout << "It will drop 1 in 9 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 2 - bet << endl;
                 money = money + (bet * 2);
                 score.totalWon += (bet * 2);
@@ -288,6 +292,7 @@ bool Slots::isWin() {
             case 1:
                 cout << "Chance is: 2.83%" << endl;
                 cout << "It will drop 1 in 35 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 4 - bet << endl;
                 money = money + (bet * 4);
                 score.totalWon += (bet * 4);
@@ -295,6 +300,7 @@ bool Slots::isWin() {
             case 2:
                 cout << "Chance is: 0.275% !" << endl;
                 cout << "It will drop 1 in 363 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 12 - bet << endl;
                 money = money + (bet * 12);
                 score.totalWon += (bet * 12);
@@ -302,6 +308,7 @@ bool Slots::isWin() {
             case 3:
                 cout << "Chance is only: 0.011% !!" << endl;
                 cout << "It will drop 1 in 8.956 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 50 - bet << endl;
                 money = money + (bet * 50);
                 score.totalWon += (bet * 50);
@@ -309,6 +316,7 @@ bool Slots::isWin() {
             case 4:
                 cout << "Chance is only: 0.000078% !!!" << endl;
                 cout << "It will drop 1 in 1.275.510 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 200 - bet << endl;
                 money = money + (bet * 200);
                 score.totalWon += (bet * 200);
@@ -323,6 +331,7 @@ bool Slots::isWin() {
                 cout << "Jackpot" << endl;
                 cout << "Chance is: 1.84528% !!!" << endl;
                 cout << "It will drop 1 in 54 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 10 - bet << endl;
                 money = money + (bet * 10);
                 score.totalWon += (bet * 10);
@@ -331,6 +340,7 @@ bool Slots::isWin() {
                 cout << "Jackpot!" << endl;
                 cout << "Chance is: 0.243% !!!" << endl;
                 cout << "It will drop 1 in 411 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 30 - bet << endl;
                 money = money + (bet * 30);
                 score.totalWon += (bet * 30);
@@ -339,6 +349,7 @@ bool Slots::isWin() {
                 cout << "Jackpot!!" << endl;
                 cout << "Chance is: 0.010486% !!!" << endl;
                 cout << "It will drop 1 in 9.536 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 200 - bet << endl;
                 money = money + (bet * 200);
                 score.totalWon += (bet * 200);
@@ -348,6 +359,7 @@ bool Slots::isWin() {
                 cout << "JACKPOT!!!" << endl;
                 cout << "Chance is only: 0.000168% !!!" << endl;
                 cout << "It will drop 1 in 594.990 spins" << endl;
+                cout << "Your bet: " << bet << endl;
                 cout << "You win: " << bet * 1500 - bet << endl;
                 money = money + (bet * 1500);
                 score.totalWon += (bet * 1500);

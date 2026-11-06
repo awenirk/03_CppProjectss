@@ -7,11 +7,11 @@
 using namespace std;
 
 enum Item {
-    CHERRY = 1,
-    LEMON = 2,
-    BAR = 3,
-    DIAMOND = 4,
-    SEVEN = 5
+    CHERRY = 0,
+    LEMON = 1,
+    BAR = 2,
+    DIAMOND = 3,
+    SEVEN = 4
 };
 struct Score {
     int spinsCount;  // count
@@ -55,20 +55,19 @@ public:
     }
 #pragma endregion
 #pragma region getters_setters
-    int getMoney()const { return money; }
     void setMoney(int money) { this->money = money; }
+    void seteBet(int bet) { this->bet = bet; }
 #pragma endregion
 #pragma region functions
     void print()const;
     void showMoney()const;
-    void showResults()const;
+    void showStats()const;
 #pragma endregion
 #pragma region slot_functions
     Item randomChar();
     void fillReels();
     void spin();
     bool isWin();
-    void enterBet();
     void dodep();
 #pragma endregion
 };

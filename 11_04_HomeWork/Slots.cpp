@@ -106,7 +106,7 @@ void Slots::print() const {
 void Slots::showMoney() const {
     cout << "Your money:" << money << endl;
 }
-void Slots::showResults() const {
+void Slots::showStats() const {
     cout << "Last bet:" << lastBet << endl;
     cout << "Your spin count: " << score.spinsCount << endl;
     cout << "Your wins count: " << score.winsCount << endl;
@@ -182,126 +182,176 @@ void Slots::spin() {
     score.spinsCount++;
 }
 bool Slots::isWin() {
-    bool win = true;
-    int wins = 0; // тут реалізувати
-    for (int i = 1; i < 5; i++) {
-        if (reels[0] != reels[i]) {
-            wins++;
+    bool win = false;
+    int counts[5] = {0, 0, 0, 0, 0};
+    int winningSymbol = -1;
+    int wins = 0;
+
+    for (int i = 0; i < 5; i++) {
+        int symbol = reels[i];
+        if (symbol >= 0 && symbol <= 4) {
+            counts[symbol]++;
         }
     }
-    if (wins < 2) { win = false; }
-    else if (wins < 4)
-    cout << "Your bet: " << bet << endl;
-    if (win) {
+    for (int symbol = 0; symbol <= 4; symbol++) {
+        if (counts[symbol] >= 3) {
+            if (counts[symbol] > wins) {
+                wins = counts[symbol];
+                winningSymbol = symbol;
+            }
+        }
+    }
+
+
+    if (wins < 3) {
+        cout << "You lose: " << bet << endl;
+        money -= bet;
+        score.lossesCount++;
+        score.totalLose += bet;
+        win = false;
+    }
+    else {
+        cout << "Your bet: " << bet << endl;
+        money -= bet;
+        score.winsCount++;
+        win = true;
         switch (wins) {
         case 3:
-            switch (reels[0]) {
+            cout << "Three in a row!" << endl;
+            switch (winningSymbol) {
+            case 0:
+                cout << "You win: " << bet * 0.5 << endl;
+                money = money + (bet * 0.5);
+                score.totalWon += (bet * 0.5);
+                break;
             case 1:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 15 << endl;
-                money = money - bet + (bet * 15);
+                cout << "You win: " << bet * 1 << endl;
+                money = money + (bet * 1);
+                score.totalWon += (bet * 1);
                 break;
             case 2:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 100 << endl;
-                money = money - bet + (bet * 100);
+                cout << "Chance is: 2.89%" << endl;
+                cout << "It will drop 1 in 34 spins" << endl;
+                cout << "You win: " << bet * 2 << endl;
+                money = money + (bet * 2);
+                score.totalWon += (bet * 2);
                 break;
             case 3:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 2000 << endl;
-                money = money - bet + (bet * 2000);
+                cout << "Chance is: 0.29% !!!" << endl;
+                cout << "It will drop 1 in 337 spins" << endl;
+                cout << "You win: " << bet * 6 << endl;
+                money = money + (bet * 6);
+                score.totalWon += (bet * 6);
                 break;
             case 4:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 10000 << endl;
-                money = money - bet + (bet * 10000);
-                break;
-            case 5:
-                cout << "Chance is only: 0.000000032% !!!" << endl;
-                cout << "It will drop 1 in 31.250.000 spins" << endl;
-                cout << "You win: " << bet * 185000 << endl;
-                money = money - bet + (bet * 185000);
+                cout << "Chance is: 0.0076% !!!" << endl;
+                cout << "It will drop 1 in 13.015 spins" << endl;
+                cout << "You win: " << bet * 15 << endl;
+                money = money + (bet * 15);
+                score.totalWon += (bet * 15);
                 break;
             default:
                 break;
             }
+            break;
         case 4:
-            switch (reels[0]) {
+            cout << "Four in a row!!" << endl;
+            switch (winningSymbol) {
+            case 0:
+                cout << "Chance is: 11.2%" << endl;
+                cout << "It will drop 1 in 9 spins" << endl;
+                cout << "You win: " << bet * 2 << endl;
+                money = money + (bet * 2);
+                score.totalWon += (bet * 2);
+                break;
             case 1:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 15 << endl;
-                money = money - bet + (bet * 15);
+                cout << "Chance is: 2.83%" << endl;
+                cout << "It will drop 1 in 35 spins" << endl;
+                cout << "You win: " << bet * 4 << endl;
+                money = money + (bet * 4);
+                score.totalWon += (bet * 4);
                 break;
             case 2:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 100 << endl;
-                money = money - bet + (bet * 100);
+                cout << "Chance is: 0.275% !" << endl;
+                cout << "It will drop 1 in 363 spins" << endl;
+                cout << "You win: " << bet * 12 << endl;
+                money = money + (bet * 12);
+                score.totalWon += (bet * 12);
                 break;
             case 3:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 2000 << endl;
-                money = money - bet + (bet * 2000);
+                cout << "Chance is only: 0.011% !!" << endl;
+                cout << "It will drop 1 in 8.956 spins" << endl;
+                cout << "You win: " << bet * 50 << endl;
+                money = money + (bet * 50);
+                score.totalWon += (bet * 50);
                 break;
             case 4:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 10000 << endl;
-                money = money - bet + (bet * 10000);
-                break;
-            case 5:
-                cout << "It will drop 1 in 31.250.000 spins" << endl;
-                cout << "Chance is only: 0.000000032% !!!" << endl;
-                cout << "You win: " << bet * 185000 << endl;
-                money = money - bet + (bet * 185000);
+                cout << "Chance is only: 0.000078% !!!" << endl;
+                cout << "It will drop 1 in 1.275.510 spins" << endl;
+                cout << "You win: " << bet * 200 << endl;
+                money = money + (bet * 200);
+                score.totalWon += (bet * 200);
                 break;
             default:
                 break;
             }
+            break;
         case 5:
-            switch (reels[0]) {
+            switch (winningSymbol) {
+            case 0:
+                cout << "Jackpot" << endl;
+                cout << "Chance is: 1.84528% !!!" << endl;
+                cout << "It will drop 1 in 54 spins" << endl;
+                cout << "You win: " << bet * 10 << endl;
+                money = money + (bet * 10);
+                score.totalWon += (bet * 10);
+                break;
             case 1:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 15 << endl;
-                money = money - bet + (bet * 15);
+                cout << "Jackpot!" << endl;
+                cout << "Chance is: 0.243% !!!" << endl;
+                cout << "It will drop 1 in 411 spins" << endl;
+                cout << "You win: " << bet * 30 << endl;
+                money = money + (bet * 30);
+                score.totalWon += (bet * 30);
                 break;
             case 2:
                 cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 100 << endl;
-                money = money - bet + (bet * 100);
+                cout << "Chance is: 0.010486% !!!" << endl;
+                cout << "It will drop 1 in 9.536 spins" << endl;
+                cout << "You win: " << bet * 200 << endl;
+                money = money + (bet * 200);
+                score.totalWon += (bet * 200);
+                Sleep(3000);
                 break;
             case 3:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 2000 << endl;
-                money = money - bet + (bet * 2000);
+                cout << "JACKPOT!!!" << endl;
+                cout << "Chance is only: 0.000168% !!!" << endl;
+                cout << "It will drop 1 in 594.990 spins" << endl;
+                cout << "You win: " << bet * 1500 << endl;
+                money = money + (bet * 1500);
+                score.totalWon += (bet * 1500);
+                Sleep(5000);
                 break;
             case 4:
-                cout << "Jackpot!!" << endl;
-                cout << "You win: " << bet * 10000 << endl;
-                money = money - bet + (bet * 10000);
-                break;
-            case 5:
                 cout << "BIGEST JACKPOT EVER IN WORLD!!!!!!" << endl;
-                cout << "Chance is only: 0.000000032% !!!" << endl;
-                cout << "It will drop 1 in 31.250.000 spins" << endl;
-                cout << "You win: " << bet * 185000 << endl;
-                money = money - bet + (bet * 185000);
+                cout << "Chance is only: 0.000032% !!!" << endl;
+                cout << "It will drop 1 in 3.125.000 spins" << endl;
+                cout << "You win: " << bet * 10000 << endl;
+                money = money + (bet * 10000);
+                score.totalWon += (bet * 10000);
+                Sleep(10000);
                 break;
             default:
                 break;
             }
+            break;
+
         default:
             break;
         }
-        
-        showMoney();
     }
-    else {
-        cout << "You lose: " << bet * 1 << endl;
-        money -= bet;
-        showMoney();
-    }
+    showMoney();
     lastBet = bet;
     return win;
 }
-void Slots::enterBet() {}
-void Slots::dodep() {}
 #pragma endregion

@@ -13,6 +13,8 @@ string getSymbol(Item item) {
         return "DIAMOND"; // 💎
     case SEVEN:
         return " SEVEN"; // 🔥
+    case NONE:
+        return " NONE";
     default:
         return "?";
     }
@@ -354,3 +356,18 @@ bool Slots::isWin() {
     return win;
 }
 #pragma endregion
+
+Table::Table(int n1) : n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {
+    t1 = NONE;
+    t2 = NONE;
+    t3 = NONE;
+    t4 = NONE;
+    t5 = NONE;
+}
+Table::Table(int n1, int n2, int n3, int n4, int n5) : n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {
+    t1 = NONE;
+    t2 = NONE;
+    t3 = NONE;
+    t4 = NONE;
+    t5 = NONE;
+}

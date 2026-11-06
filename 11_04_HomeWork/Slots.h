@@ -13,7 +13,8 @@ enum Item {
     LEMON = 1,
     BAR = 2,
     DIAMOND = 3,
-    SEVEN = 4
+    SEVEN = 4,
+    NONE = 5
 };
 struct Score {
     int spinsCount;  // count
@@ -25,8 +26,8 @@ struct Score {
 struct Table {
     int n1, n2, n3, n4, n5;
     Item t1, t2, t3, t4, t5;
-    Table(int n1): n1(n1), n2(n1), n3(n1), n4(n1), n5(n1) {}
-    Table(int n1, int n2, int n3, int n4, int n5): n1(n1), n2(n2), n3(n3), n4(n4), n5(n5) {}
+    Table(int n1);
+    Table(int n1, int n2, int n3, int n4, int n5);
     void setTs(Item* reels) {
         this->t1 = reels[0];
         this->t2 = reels[1];

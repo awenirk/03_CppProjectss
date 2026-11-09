@@ -34,4 +34,5 @@
   <Project Path="12_03_HomeWork/12_03_HomeWork.vcxproj" Id="905d10d7-5619-4461-87c2-fd86864eaaeb" />
   <Project Path="13_01_TwoLinkedList/13_01_TwoLinkedList.vcxproj" Id="8e28ff8d-4cb9-4c27-b67b-646a8371bdb5" />
   <Project Path="13_02_PraktWork/13_02_PraktWork.vcxproj" Id="152beb37-a0cc-4c16-8dd7-7d0a4ae881d3" />
+  <Project Path="14_01_inheritance/14_01_inheritance.vcxproj" Id="d993a87b-79c9-4f04-8e8b-48799f5edfc4" />
 </Solution>
